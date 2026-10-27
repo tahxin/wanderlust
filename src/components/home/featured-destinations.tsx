@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -74,38 +74,66 @@ const fallbackDestinations: Destination[] = [
 export function FeaturedDestinations() {
   const [destinations, setDestinations] = useState<Destination[]>(fallbackDestinations);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let isMounted = true;
     fetchDestinations()
       .then((data) => {
         if (isMounted && data && data.length > 0) {
-          console.log(
-            `🌟 [FRONTEND FeaturedDestinations] Received ${data.length} live packages for homepage from backend`
-          );
           setDestinations(data);
         }
       })
       .catch((err) => {
-        console.error("❌ [FRONTEND FeaturedDestinations] Failed to load destinations:", err);
+        console.error("Failed to load destinations:", err);
       });
     return () => {
       isMounted = false;
     };
   }, []);
 
-  const totalSlides = Math.min(5, Math.max(1, destinations.length));
-  const maxIndex = Math.max(0, destinations.length - 2);
+  const featuredList = destinations.slice(0, 5);
+  const totalSlides = featuredList.length || 5;
+
+  const scrollToIndex = (index: number) => {
+    if (!sliderRef.current) return;
+    const firstItem = sliderRef.current.children[0] as HTMLElement;
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth;
+    const gap = 32;
+    sliderRef.current.scrollTo({
+      left: index * (itemWidth + gap),
+      behavior: "smooth",
+    });
+  };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(0, prev - 1));
+    if (currentIndex > 0) {
+      const nextIdx = currentIndex - 1;
+      setCurrentIndex(nextIdx);
+      scrollToIndex(nextIdx);
+    }
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+    if (currentIndex < totalSlides - 1) {
+      const nextIdx = currentIndex + 1;
+      setCurrentIndex(nextIdx);
+      scrollToIndex(nextIdx);
+    }
   };
 
-  const currentDisplayNum = Math.min(currentIndex + 1, totalSlides);
+  const handleScroll = () => {
+    if (!sliderRef.current) return;
+    const firstItem = sliderRef.current.children[0] as HTMLElement;
+    if (!firstItem) return;
+    const step = firstItem.offsetWidth + 32;
+    const newIndex = Math.round(sliderRef.current.scrollLeft / step);
+    const clamped = Math.max(0, Math.min(newIndex, totalSlides - 1));
+    if (clamped !== currentIndex) {
+      setCurrentIndex(clamped);
+    }
+  };
 
   return (
     <section className="bg-white py-20 md:py-28">
@@ -131,12 +159,11 @@ export function FeaturedDestinations() {
 
         <div className="relative mt-12 overflow-hidden">
           <div
-            className="flex gap-8 transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateX(-${currentIndex * 52}%)`,
-            }}
+            ref={sliderRef}
+            onScroll={handleScroll}
+            className="flex gap-8 overflow-x-auto scroll-smooth py-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
-            {destinations.map((pkg, idx) => (
+            {featuredList.map((pkg, idx) => (
               <div
                 key={pkg._id || idx}
                 className="group w-[88vw] shrink-0 sm:w-[500px] md:w-[calc(50%-16px)] md:min-w-[calc(50%-16px)]"
@@ -198,7 +225,7 @@ export function FeaturedDestinations() {
         <div className="mt-14 flex items-center justify-between gap-6">
           <div className="flex flex-1 items-center gap-6">
             <span className="text-[18px] font-medium text-ink min-w-[32px]">
-              {currentDisplayNum}/{totalSlides}
+              {currentIndex + 1}/{totalSlides}
             </span>
             <div className="h-[1px] flex-1 bg-gray-200" />
           </div>
@@ -216,7 +243,7 @@ export function FeaturedDestinations() {
             <button
               type="button"
               onClick={handleNext}
-              disabled={currentIndex >= maxIndex}
+              disabled={currentIndex >= totalSlides - 1}
               aria-label="Next slide"
               className="flex size-11 items-center justify-center rounded-full border border-gray-300 text-ink transition-colors hover:border-ink hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed"
             >
