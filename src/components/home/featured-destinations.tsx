@@ -198,7 +198,7 @@ export function FeaturedDestinations() {
 
                   <div className="mt-4 pt-2">
                     <Link
-                      href="/destinations"
+                      href={`/destinations/${pkg._id}`}
                       className="inline-flex items-center gap-1.5 text-[14px] font-bold tracking-wider text-brand uppercase hover:underline"
                     >
                       Book Now

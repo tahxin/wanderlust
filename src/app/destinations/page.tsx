@@ -211,14 +211,13 @@ export default function DestinationsPage() {
                   </div>
 
                   <div className="mt-4 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => alert(`Package "${pkg.name}" booking selected!`)}
+                    <Link
+                      href={`/destinations/${pkg._id}`}
                       className="inline-flex items-center gap-1.5 text-[14px] font-bold tracking-wider text-brand uppercase hover:underline"
                     >
                       Book Now
                       <ArrowUpRight className="size-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

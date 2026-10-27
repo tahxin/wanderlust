@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Destinations", href: "/destinations" },
-  { label: "My Bookings", href: "/#my-bookings" },
+  { label: "My Bookings", href: "/my-bookings" },
   { label: "Admin", href: "/add-destinations" },
 ];
 
 const accountLinks = [
-  { label: "Login", href: "/#login" },
-  { label: "Sign Up", href: "/#signup" },
+  { label: "Login", href: "/login" },
+  { label: "Sign Up", href: "/signup" },
 ];
 
 export function Navbar() {
@@ -58,7 +58,13 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center justify-self-end gap-8 text-[15px] font-semibold text-ink">
-          <Link href="/#profile" className="flex items-center gap-2 hover:text-brand">
+          <Link
+            href="/profile"
+            className={cn(
+              "flex items-center gap-2 hover:text-brand",
+              pathname === "/profile" ? "text-brand underline underline-offset-4" : "text-ink"
+            )}
+          >
             <User className="size-4" strokeWidth={2} />
             Profile
           </Link>

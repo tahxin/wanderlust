@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
@@ -29,7 +30,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${fraunces.variable} h-full font-sans antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
+        <Suspense fallback={<header className="absolute inset-x-4 top-4 z-20 h-14 bg-white" />}>
+          <Navbar />
+        </Suspense>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

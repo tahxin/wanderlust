@@ -1,0 +1,164 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import {
+  Camera,
+  DollarSign,
+  Edit2,
+  Globe,
+  MapPin,
+  Plane,
+  TrendingUp,
+} from "lucide-react";
+
+export default function ProfilePage() {
+  const [isEditing, setIsEditing] = useState(false);
+  const [profile, setProfile] = useState({
+    name: "Sarah Mitchell",
+    location: "San Francisco, CA",
+    memberSince: "Mar 2024",
+    nationality: "United States",
+    email: "sarah.mitchell@example.com",
+    avatar: "/images/person2.png",
+  });
+
+  return (
+    <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        {/* Header */}
+        <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
+          My Profile
+        </h1>
+        <p className="mt-3 text-[17px] text-muted-foreground">
+          Manage your account settings and travel preferences
+        </p>
+
+        {/* Profile Content */}
+        <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-[380px_1fr]">
+          {/* User Info Card */}
+          <div className="rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
+            <div className="flex flex-col items-center text-center">
+              {/* Avatar with Camera badge */}
+              <div className="relative size-36 overflow-hidden rounded-full border-4 border-white shadow-md">
+                <Image
+                  src={profile.avatar}
+                  alt={profile.name}
+                  fill
+                  className="object-cover"
+                />
+                <button
+                  type="button"
+                  aria-label="Change photo"
+                  className="absolute right-2 bottom-2 flex size-8 items-center justify-center rounded-full bg-brand text-white shadow-sm transition-transform hover:scale-110"
+                >
+                  <Camera className="size-4" />
+                </button>
+              </div>
+
+              {isEditing ? (
+                <div className="mt-4 space-y-2">
+                  <input
+                    type="text"
+                    value={profile.name}
+                    onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                    className="h-9 w-full rounded border border-gray-300 px-3 text-center text-[18px] font-medium text-ink outline-none focus:border-brand"
+                  />
+                  <input
+                    type="text"
+                    value={profile.location}
+                    onChange={(e) => setProfile({ ...profile, location: e.target.value })}
+                    className="h-8 w-full rounded border border-gray-300 px-2 text-center text-[13px] text-muted-foreground outline-none focus:border-brand"
+                  />
+                </div>
+              ) : (
+                <>
+                  <h2 className="mt-5 font-heading text-[26px] font-medium text-ink">
+                    {profile.name}
+                  </h2>
+                  <div className="mt-1.5 flex items-center gap-1.5 text-[14px] text-muted-foreground">
+                    <MapPin className="size-4 text-ink" />
+                    <span>{profile.location}</span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="my-6 h-[1px] bg-gray-100" />
+
+            <div className="space-y-4 text-[15px]">
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Member since</span>
+                <span className="font-semibold text-ink">{profile.memberSince}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Nationality</span>
+                <span className="font-semibold text-ink">{profile.nationality}</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsEditing(!isEditing)}
+              className="mt-8 flex h-11 w-full items-center justify-center gap-2 rounded-[4px] bg-brand text-[15px] font-medium text-white transition-colors hover:bg-brand/90"
+            >
+              <Edit2 className="size-4" />
+              {isEditing ? "Save Profile" : "Edit Profile"}
+            </button>
+          </div>
+
+          {/* Right: Travel Statistics */}
+          <div>
+            <h2 className="text-[20px] font-semibold text-ink">Travel Statistics</h2>
+
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {/* Stat 1: Total Bookings */}
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                <div>
+                  <span className="text-[14px] text-muted-foreground">Total Bookings</span>
+                  <div className="mt-2 text-[32px] font-bold text-ink">12</div>
+                </div>
+                <div className="flex size-14 items-center justify-center rounded-full bg-cyan-50 text-brand">
+                  <Plane className="size-6" />
+                </div>
+              </div>
+
+              {/* Stat 2: Countries Visited */}
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                <div>
+                  <span className="text-[14px] text-muted-foreground">Countries Visited</span>
+                  <div className="mt-2 text-[32px] font-bold text-ink">18</div>
+                </div>
+                <div className="flex size-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                  <Globe className="size-6" />
+                </div>
+              </div>
+
+              {/* Stat 3: Upcoming Trips */}
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                <div>
+                  <span className="text-[14px] text-muted-foreground">Upcoming Trips</span>
+                  <div className="mt-2 text-[32px] font-bold text-ink">2</div>
+                </div>
+                <div className="flex size-14 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                  <TrendingUp className="size-6" />
+                </div>
+              </div>
+
+              {/* Stat 4: Total Spent */}
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+                <div>
+                  <span className="text-[14px] text-muted-foreground">Total Spent</span>
+                  <div className="mt-2 text-[32px] font-bold text-ink">$15,750</div>
+                </div>
+                <div className="flex size-14 items-center justify-center rounded-full bg-purple-50 text-purple-600">
+                  <DollarSign className="size-6" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

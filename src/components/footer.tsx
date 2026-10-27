@@ -1,7 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-
-const quickLinks = ["Home", "Destinations", "My Bookings", "My Profile"];
 
 const supportLinks = ["Help Center", "Terms of Service", "Privacy Policy"];
 
@@ -90,13 +89,26 @@ export function Footer() {
               Quick Links
             </p>
             <ul className="mt-[18px] text-[16px] leading-[40px] text-[#d6d6d6]">
-              {quickLinks.map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-white">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/destinations" className="hover:text-white">
+                  Destinations
+                </Link>
+              </li>
+              <li>
+                <Link href="/my-bookings" className="hover:text-white">
+                  My Bookings
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile" className="hover:text-white">
+                  My Profile
+                </Link>
+              </li>
             </ul>
           </div>
 
