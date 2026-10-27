@@ -149,7 +149,6 @@ export function AddDestinationForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Destination Name */}
         <div>
           <Label htmlFor="name" className={labelStyle}>
             Destination Name
@@ -165,7 +164,6 @@ export function AddDestinationForm() {
           />
         </div>
 
-        {/* Country + Category */}
         <div className="grid gap-5 md:grid-cols-2">
           <div>
             <Label htmlFor="country" className={labelStyle}>
@@ -207,7 +205,6 @@ export function AddDestinationForm() {
           </div>
         </div>
 
-        {/* Price + Duration */}
         <div className="grid gap-5 md:grid-cols-2">
           <div>
             <Label htmlFor="price" className={labelStyle}>
@@ -240,7 +237,6 @@ export function AddDestinationForm() {
           </div>
         </div>
 
-        {/* Departure Date */}
         <div>
           <Label htmlFor="departureDate" className={labelStyle}>
             Departure Date
@@ -256,7 +252,6 @@ export function AddDestinationForm() {
           />
         </div>
 
-        {/* Image URL */}
         <div>
           <Label htmlFor="imageUrl" className={labelStyle}>
             Image URL
@@ -272,7 +267,6 @@ export function AddDestinationForm() {
           />
         </div>
 
-        {/* Description */}
         <div>
           <Label htmlFor="description" className={labelStyle}>
             Description
@@ -288,7 +282,6 @@ export function AddDestinationForm() {
           />
         </div>
 
-        {/* Actions */}
         <div className="flex items-center justify-end gap-3.5 pt-3">
           <Button
             type="button"

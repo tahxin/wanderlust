@@ -60,7 +60,6 @@ export default function DestinationsPage() {
     };
   }, [selectedCategory, selectedSort]);
 
-  // Filter by price range client-side
   const filteredDestinations = destinations.filter((pkg) => {
     const price = typeof pkg.price === "number" ? pkg.price : parseFloat(pkg.price) || 0;
     if (selectedPriceRange === "Under $1500") return price < 1500;
@@ -72,7 +71,6 @@ export default function DestinationsPage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Title */}
         <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
           Explore All Destinations
         </h1>
@@ -80,9 +78,7 @@ export default function DestinationsPage() {
           Find your perfect travel experience from our curated collection
         </p>
 
-        {/* Filter Bar */}
         <div className="mt-12 grid grid-cols-1 border border-gray-200 bg-white sm:grid-cols-3">
-          {/* Category Filter */}
           <div className="border-b border-gray-200 p-4 sm:border-r sm:border-b-0">
             <label className="block text-[12px] font-bold tracking-wider text-muted-foreground uppercase">
               Category
@@ -100,7 +96,6 @@ export default function DestinationsPage() {
             </select>
           </div>
 
-          {/* Price Range Filter */}
           <div className="border-b border-gray-200 p-4 sm:border-r sm:border-b-0">
             <label className="block text-[12px] font-bold tracking-wider text-muted-foreground uppercase">
               Price Range
@@ -118,7 +113,6 @@ export default function DestinationsPage() {
             </select>
           </div>
 
-          {/* Sort By Filter */}
           <div className="p-4">
             <label className="block text-[12px] font-bold tracking-wider text-muted-foreground uppercase">
               Sort By
@@ -137,7 +131,6 @@ export default function DestinationsPage() {
           </div>
         </div>
 
-        {/* Count Label */}
         <div className="mt-8">
           <p className="text-[16px] text-muted-foreground">
             Showing{" "}
@@ -148,7 +141,6 @@ export default function DestinationsPage() {
           </p>
         </div>
 
-        {/* Destinations Grid */}
         {loading ? (
           <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
@@ -174,7 +166,6 @@ export default function DestinationsPage() {
           <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {filteredDestinations.map((pkg) => (
               <div key={pkg._id} className="group">
-                {/* Image */}
                 <div className="relative aspect-[411/231] w-full overflow-hidden rounded-[2px] bg-gray-100">
                   <Image
                     src={pkg.imageUrl || "/images/destinations/image1.png"}
@@ -183,20 +174,17 @@ export default function DestinationsPage() {
                     sizes="(max-width: 768px) 100vw, 411px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Category Pill Badge */}
                   {pkg.category && (
                     <Badge variant="outline" className="absolute top-4 left-4 bg-white/95 text-ink text-xs font-semibold shadow-xs border-stone-200">
                       {pkg.category}
                     </Badge>
                   )}
-                  {/* Rating Badge */}
                   <Badge variant="secondary" className="absolute top-4 right-4 flex items-center gap-1.5 bg-white/95 text-ink text-xs font-semibold shadow-xs">
                     <span>{pkg.rating ? pkg.rating.toFixed(1) : "4.8"}</span>
                     <Star className="size-3.5 fill-ink text-ink" />
                   </Badge>
                 </div>
 
-                {/* Info */}
                 <div className="mt-5">
                   <div className="flex items-center gap-1.5 text-[14px] text-muted-foreground">
                     <MapPin className="size-4 text-ink" />

@@ -105,13 +105,11 @@ export function FeaturedDestinations() {
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
 
-  // 1/5 index formatting matching Figma
   const currentDisplayNum = Math.min(currentIndex + 1, totalSlides);
 
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Top Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-heading text-[44px] leading-[1.12] font-normal tracking-tight text-ink md:text-[54px] lg:text-[58px]">
@@ -131,7 +129,6 @@ export function FeaturedDestinations() {
           </Link>
         </div>
 
-        {/* Carousel Grid Track */}
         <div className="relative mt-12 overflow-hidden">
           <div
             className="flex gap-8 transition-transform duration-500 ease-out"
@@ -144,7 +141,6 @@ export function FeaturedDestinations() {
                 key={pkg._id || idx}
                 className="group w-[88vw] shrink-0 sm:w-[500px] md:w-[calc(50%-16px)] md:min-w-[calc(50%-16px)]"
               >
-                {/* Image Container with 4.5 Star Badge */}
                 <div className="relative aspect-[411/231] w-full overflow-hidden rounded-[2px] bg-gray-100">
                   <Image
                     src={pkg.imageUrl || "/images/destinations/image1.png"}
@@ -153,22 +149,18 @@ export function FeaturedDestinations() {
                     sizes="(max-width: 768px) 88vw, 560px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Rating Badge */}
                   <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-[3px] bg-white/95 px-2.5 py-1 text-[13px] font-semibold text-ink shadow-xs">
                     <span>{pkg.rating ? pkg.rating.toFixed(1) : "4.5"}</span>
                     <Star className="size-3.5 fill-ink text-ink" />
                   </div>
                 </div>
 
-                {/* Card Information */}
                 <div className="mt-5">
-                  {/* Location */}
                   <div className="flex items-center gap-1.5 text-[14px] text-muted-foreground">
                     <MapPin className="size-4 text-ink" strokeWidth={1.5} />
                     <span>{pkg.country}</span>
                   </div>
 
-                  {/* Title & Price on same line */}
                   <div className="mt-2.5 flex items-baseline justify-between gap-4">
                     <h3 className="font-heading text-[26px] font-normal text-ink">
                       {pkg.name}
@@ -183,13 +175,11 @@ export function FeaturedDestinations() {
                     </div>
                   </div>
 
-                  {/* Duration */}
                   <div className="mt-2 flex items-center gap-2 text-[14px] text-muted-foreground">
                     <Calendar className="size-4 text-ink" strokeWidth={1.5} />
                     <span>{pkg.duration || "7 Days/6 Nights"}</span>
                   </div>
 
-                  {/* Book Now */}
                   <div className="mt-4 pt-1">
                     <Link
                       href={`/destinations/${pkg._id}`}
@@ -205,7 +195,6 @@ export function FeaturedDestinations() {
           </div>
         </div>
 
-        {/* Carousel Pagination & Arrow Controls (matching Figma 01_Home.png) */}
         <div className="mt-14 flex items-center justify-between gap-6">
           <div className="flex flex-1 items-center gap-6">
             <span className="text-[18px] font-medium text-ink min-w-[32px]">

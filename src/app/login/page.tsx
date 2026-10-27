@@ -30,7 +30,6 @@ export default function LoginPage() {
   return (
     <section className="min-h-screen bg-[#fafbfc] pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Title */}
         <div className="text-center">
           <h1 className="font-heading text-[44px] leading-tight font-normal text-ink md:text-[56px]">
             Welcome Back
@@ -40,10 +39,8 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Card */}
         <div className="mx-auto mt-10 w-full max-w-[480px] rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email Address */}
             <div className="space-y-1.5">
               <Label htmlFor="login-email" className="text-[14px] font-medium text-ink">
                 Email Address
@@ -62,7 +59,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Password */}
             <div className="space-y-1.5">
               <Label htmlFor="login-password" className="text-[14px] font-medium text-ink">
                 Password
@@ -81,7 +77,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Remember me & Forgot password */}
             <div className="flex items-center justify-between text-[14px]">
               <label className="flex cursor-pointer items-center gap-2 text-muted-foreground select-none">
                 <input
@@ -109,7 +104,6 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-7 text-center">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200" />
@@ -119,7 +113,6 @@ export default function LoginPage() {
             </span>
           </div>
 
-          {/* Google Sign In */}
           <Button
             type="button"
             variant="outline"

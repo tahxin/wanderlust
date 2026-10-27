@@ -30,7 +30,6 @@ export default function ProfilePage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Header */}
         <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
           My Profile
         </h1>
@@ -38,12 +37,9 @@ export default function ProfilePage() {
           Manage your account settings and travel preferences
         </p>
 
-        {/* Profile Content */}
         <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-[380px_1fr]">
-          {/* User Info Card */}
           <div className="rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
             <div className="flex flex-col items-center text-center">
-              {/* Avatar with Camera badge */}
               <div className="relative size-36 overflow-hidden rounded-full border-4 border-white shadow-md">
                 <Image
                   src={profile.avatar}
@@ -113,12 +109,10 @@ export default function ProfilePage() {
             </Button>
           </div>
 
-          {/* Right: Travel Statistics */}
           <div>
             <h2 className="text-[20px] font-semibold text-ink">Travel Statistics</h2>
 
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {/* Stat 1: Total Bookings */}
               <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Total Bookings</span>
@@ -129,7 +123,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Stat 2: Countries Visited */}
               <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Countries Visited</span>
@@ -140,7 +133,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Stat 3: Upcoming Trips */}
               <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Upcoming Trips</span>
@@ -151,7 +143,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Stat 4: Total Spent */}
               <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Total Spent</span>
@@ -163,7 +154,6 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Past Completed Adventures */}
             <div className="mt-10">
               <div className="flex items-center justify-between">
                 <h3 className="text-[20px] font-semibold text-ink">Recent Adventures</h3>
@@ -225,7 +215,6 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Saved Wishlist */}
             <div className="mt-10">
               <h3 className="text-[20px] font-semibold text-ink">Saved to Wishlist</h3>
               <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">

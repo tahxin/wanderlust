@@ -35,7 +35,6 @@ export default function SignUpPage() {
   return (
     <section className="min-h-screen bg-[#fafbfc] pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Title */}
         <div className="text-center">
           <h1 className="font-heading text-[44px] leading-tight font-normal text-ink md:text-[56px]">
             Create Account
@@ -45,10 +44,8 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        {/* Card */}
         <div className="mx-auto mt-10 w-full max-w-[480px] rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Full Name */}
             <div className="space-y-1.5">
               <Label htmlFor="signup-name" className="text-[14px] font-medium text-ink">
                 Full Name
@@ -67,7 +64,6 @@ export default function SignUpPage() {
               </div>
             </div>
 
-            {/* Email Address */}
             <div className="space-y-1.5">
               <Label htmlFor="signup-email" className="text-[14px] font-medium text-ink">
                 Email Address
@@ -86,7 +82,6 @@ export default function SignUpPage() {
               </div>
             </div>
 
-            {/* Password */}
             <div className="space-y-1.5">
               <Label htmlFor="signup-password" className="text-[14px] font-medium text-ink">
                 Password
@@ -105,7 +100,6 @@ export default function SignUpPage() {
               </div>
             </div>
 
-            {/* Confirm Password */}
             <div className="space-y-1.5">
               <Label htmlFor="signup-confirm-password" className="text-[14px] font-medium text-ink">
                 Confirm Password
@@ -132,7 +126,6 @@ export default function SignUpPage() {
             </Button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-7 text-center">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200" />
@@ -142,7 +135,6 @@ export default function SignUpPage() {
             </span>
           </div>
 
-          {/* Google Sign Up */}
           <Button
             type="button"
             variant="outline"

@@ -4,7 +4,6 @@ export function DestinationDetailSkeleton() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] pt-28 md:pt-32 pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Breadcrumb skeleton */}
         <div className="flex items-center gap-2">
           <Skeleton className="h-4 w-12 rounded bg-stone-200/70" />
           <span className="text-stone-300">/</span>
@@ -13,7 +12,6 @@ export function DestinationDetailSkeleton() {
           <Skeleton className="h-4 w-32 rounded bg-stone-200/70" />
         </div>
 
-        {/* Title header & Action buttons */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-3">
             <Skeleton className="h-10 w-72 sm:w-96 rounded-lg bg-stone-200/80" />
@@ -30,7 +28,6 @@ export function DestinationDetailSkeleton() {
           </div>
         </div>
 
-        {/* Image gallery grid skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="md:col-span-3 aspect-[16/9] w-full rounded-2xl overflow-hidden bg-stone-100">
             <Skeleton className="h-full w-full bg-stone-200/80" />
@@ -44,11 +41,8 @@ export function DestinationDetailSkeleton() {
           </div>
         </div>
 
-        {/* Two-column layout (content + sticky sidebar) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main content */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Overview */}
             <div className="rounded-2xl border border-stone-200/80 bg-white p-6 sm:p-8 space-y-4">
               <Skeleton className="h-6 w-32 rounded bg-stone-200/80" />
               <div className="space-y-2">
@@ -58,7 +52,6 @@ export function DestinationDetailSkeleton() {
               </div>
             </div>
 
-            {/* Highlights */}
             <div className="rounded-2xl border border-stone-200/80 bg-white p-6 sm:p-8 space-y-4">
               <Skeleton className="h-6 w-36 rounded bg-stone-200/80" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -71,7 +64,6 @@ export function DestinationDetailSkeleton() {
               </div>
             </div>
 
-            {/* Itinerary timeline skeleton */}
             <div className="rounded-2xl border border-stone-200/80 bg-white p-6 sm:p-8 space-y-6">
               <Skeleton className="h-6 w-40 rounded bg-stone-200/80" />
               <div className="space-y-4">
@@ -87,7 +79,6 @@ export function DestinationDetailSkeleton() {
               </div>
             </div>
 
-            {/* Reviews skeleton */}
             <div className="rounded-2xl border border-stone-200/80 bg-white p-6 sm:p-8 space-y-6">
               <Skeleton className="h-6 w-44 rounded bg-stone-200/80" />
               <div className="space-y-4">
@@ -107,7 +98,6 @@ export function DestinationDetailSkeleton() {
             </div>
           </div>
 
-          {/* Sticky Booking card skeleton */}
           <div className="lg:col-span-1">
             <div className="rounded-2xl border border-stone-200/80 bg-white p-6 sm:p-8 space-y-6 shadow-sm sticky top-28">
               <div className="space-y-1">

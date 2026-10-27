@@ -93,7 +93,6 @@ export default function MyBookingsPage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Header */}
         <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
           My Bookings
         </h1>
@@ -107,7 +106,6 @@ export default function MyBookingsPage() {
           </div>
         )}
 
-        {/* Bookings List */}
         <div className="mt-12 space-y-6">
           {loading ? (
             <div className="space-y-4">
@@ -136,7 +134,6 @@ export default function MyBookingsPage() {
                 key={booking._id}
                 className="flex flex-col gap-6 rounded-[6px] border border-[#f0f0f2] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between"
               >
-                {/* Left side: Image and details */}
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                   <div className="relative aspect-[411/231] w-full shrink-0 overflow-hidden rounded-[4px] bg-gray-100 sm:w-[260px] md:w-[320px]">
                     <Image
@@ -149,7 +146,6 @@ export default function MyBookingsPage() {
                   </div>
 
                   <div className="flex flex-col">
-                    {/* Status badge */}
                     <div>
                       {booking.status === "Pending" ? (
                         <Badge variant="outline" className="gap-1.5 border-amber-300 bg-amber-50 text-amber-700 font-medium">
@@ -185,7 +181,6 @@ export default function MyBookingsPage() {
                   </div>
                 </div>
 
-                {/* Right side: Action Buttons */}
                 <div className="flex items-center gap-3 self-end sm:self-center">
                   <Button
                     type="button"

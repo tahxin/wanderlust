@@ -4,7 +4,6 @@ export function FeaturedDestinationsSkeleton() {
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Top Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-3">
             <Skeleton className="h-12 w-72 sm:w-80 rounded-lg bg-stone-200/80" />
@@ -13,7 +12,6 @@ export function FeaturedDestinationsSkeleton() {
           <Skeleton className="h-11 w-44 rounded-[2px] bg-stone-200/70" />
         </div>
 
-        {/* 2-Card + peeking grid */}
         <div className="mt-12 flex gap-8 overflow-hidden">
           {Array.from({ length: 3 }).map((_, i) => (
             <div
@@ -36,7 +34,6 @@ export function FeaturedDestinationsSkeleton() {
           ))}
         </div>
 
-        {/* Bottom divider and arrows */}
         <div className="mt-14 flex items-center justify-between gap-6">
           <div className="flex flex-1 items-center gap-6">
             <Skeleton className="h-5 w-8 rounded bg-stone-200/70" />

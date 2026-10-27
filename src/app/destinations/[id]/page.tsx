@@ -123,13 +123,11 @@ function DetailContent({
   const [travelers, setTravelers] = useState(2);
   const [departureDate, setDepartureDate] = useState("05/15/2026");
 
-  // Modals state
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState<string | null>(null);
 
-  // Edit form state
   const [editForm, setEditForm] = useState({
     name: "",
     country: "",
@@ -172,7 +170,6 @@ function DetailContent({
     };
   }, [id]);
 
-  // Fallback destination if id doesn't exist yet in DB
   const currentPkg: Destination = destination || {
     _id: id,
     name: "Bali Paradise",
@@ -251,7 +248,6 @@ function DetailContent({
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        {/* Top Navigation & Action Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/destinations"
@@ -293,7 +289,6 @@ function DetailContent({
           </div>
         )}
 
-        {/* Hero Gallery */}
         <div className="mt-8 space-y-4">
           <div className="relative aspect-[16/7] w-full overflow-hidden rounded-[6px] bg-gray-100">
             <Image
@@ -324,9 +319,7 @@ function DetailContent({
           </div>
         </div>
 
-        {/* Main Content Layout */}
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_380px]">
-          {/* Left Details Column */}
           <div className="space-y-10">
             <div>
               <div className="flex items-center gap-1.5 text-[15px] text-muted-foreground">
@@ -354,7 +347,6 @@ function DetailContent({
               </div>
             </div>
 
-            {/* Overview */}
             <div>
               <h2 className="font-heading text-[26px] font-medium text-ink">Overview</h2>
               <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground">
@@ -363,7 +355,6 @@ function DetailContent({
               </p>
             </div>
 
-            {/* Highlights */}
             <div>
               <h2 className="font-heading text-[26px] font-medium text-ink">Highlights</h2>
               <p className="mt-3 text-[16px] text-muted-foreground">
@@ -379,7 +370,6 @@ function DetailContent({
               </div>
             </div>
 
-            {/* Itinerary */}
             <div>
               <h2 className="font-heading text-[26px] font-medium text-ink">Itinerary</h2>
               <div className="mt-6 space-y-6">
@@ -399,7 +389,6 @@ function DetailContent({
               </div>
             </div>
 
-            {/* Traveler Reviews */}
             <div>
               <h2 className="font-heading text-[26px] font-medium text-ink">Traveler Reviews</h2>
               <div className="mt-6 space-y-4">
@@ -428,7 +417,6 @@ function DetailContent({
             </div>
           </div>
 
-          {/* Right Sticky Booking Card */}
           <div>
             <div className="sticky top-24 rounded-[6px] border border-gray-200 bg-white p-7 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
               <span className="text-[14px] text-muted-foreground">Starting from</span>
@@ -511,7 +499,6 @@ function DetailContent({
         </div>
       </div>
 
-      {/* ================= EDIT MODAL (06_Edit.png) ================= */}
       {isEditOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
           <div className="w-full max-w-[620px] rounded-[6px] border border-gray-200 bg-white p-7 shadow-2xl">
@@ -653,7 +640,6 @@ function DetailContent({
         </div>
       )}
 
-      {/* ================= DELETE MODAL (07_Delete.png) ================= */}
       {isDeleteOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
           <div className="w-full max-w-[480px] rounded-[6px] border border-gray-200 bg-white p-7 shadow-2xl">

@@ -39,7 +39,6 @@ export interface Booking {
   createdAt: string;
 }
 
-// Fetch all destinations with optional filter parameters
 export async function fetchDestinations(options?: {
   category?: string;
   search?: string;
@@ -90,7 +89,6 @@ export async function fetchDestinations(options?: {
   }
 }
 
-// Fetch single destination by id
 export async function fetchDestinationById(id: string): Promise<Destination | null> {
   console.log(`🚀 [FRONTEND -> BACKEND] GET /destinations/${id}`);
   try {
@@ -113,7 +111,6 @@ export async function fetchDestinationById(id: string): Promise<Destination | nu
   }
 }
 
-// Create a new travel package
 export async function createDestination(
   input: CreateDestinationInput
 ): Promise<{ success: boolean; data?: Destination; error?: string }> {
@@ -154,7 +151,6 @@ export async function createDestination(
   }
 }
 
-// Delete a travel package
 export async function deleteDestination(
   id: string
 ): Promise<{ success: boolean; error?: string }> {
@@ -182,7 +178,6 @@ export async function deleteDestination(
   }
 }
 
-// Update a travel package
 export async function updateDestination(
   id: string,
   input: Partial<CreateDestinationInput>
@@ -216,7 +211,6 @@ export async function updateDestination(
   }
 }
 
-// Fetch all bookings
 export async function fetchBookings(): Promise<Booking[]> {
   console.log("🚀 [FRONTEND -> BACKEND] GET /bookings");
   try {
@@ -237,7 +231,6 @@ export async function fetchBookings(): Promise<Booking[]> {
   }
 }
 
-// Create a booking
 export async function createBooking(
   payload: Partial<Booking>
 ): Promise<{ success: boolean; data?: Booking; error?: string }> {
@@ -264,7 +257,6 @@ export async function createBooking(
   }
 }
 
-// Cancel a booking
 export async function cancelBooking(
   id: string
 ): Promise<{ success: boolean; error?: string }> {
