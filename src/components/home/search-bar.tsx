@@ -7,13 +7,13 @@ const fields = [
 
 export function SearchBar() {
   return (
-    <div className="grid h-[75px] grid-cols-2 lg:grid-cols-[repeat(4,1fr)_200px]">
+    <div className="grid min-h-[75px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,1fr)_200px] w-full">
       {fields.map((field) => (
         <div
           key={field.label}
-          className="flex flex-col justify-center border-r border-white/40 bg-white/40 px-6 backdrop-blur-[2px]"
+          className="flex flex-col justify-center border-b sm:border-b-0 sm:border-r border-white/40 bg-white/40 px-6 py-3.5 lg:py-0 backdrop-blur-[2px]"
         >
-          <p className="text-[17px] font-semibold text-white">{field.label}</p>
+          <p className="text-[15px] sm:text-[17px] font-semibold text-white">{field.label}</p>
           <input
             type="text"
             placeholder={field.placeholder}
@@ -24,7 +24,7 @@ export function SearchBar() {
       ))}
       <button
         type="button"
-        className="col-span-2 flex items-center justify-center bg-brand text-[17px] font-semibold text-white transition-colors hover:bg-brand/90 max-lg:h-14 lg:col-span-1"
+        className="col-span-1 sm:col-span-2 lg:col-span-1 flex h-14 lg:h-auto items-center justify-center bg-brand text-[17px] font-semibold text-white transition-colors hover:bg-brand/90"
       >
         Search
       </button>

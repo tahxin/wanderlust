@@ -326,10 +326,10 @@ function DetailContent({
                 <MapPin className="size-4 text-ink" />
                 <span>{currentPkg.country}</span>
               </div>
-              <h1 className="mt-2 font-heading text-[44px] leading-tight font-normal text-ink md:text-[56px]">
+              <h1 className="mt-2 font-heading text-[32px] sm:text-[44px] md:text-[56px] leading-tight font-normal text-ink">
                 {currentPkg.name}
               </h1>
-              <div className="mt-3 flex items-center gap-6 text-[15px]">
+              <div className="mt-3 flex flex-wrap items-center gap-3 sm:gap-6 text-[14px] sm:text-[15px]">
                 <div className="flex items-center gap-1.5 font-medium text-ink">
                   <Star className="size-4 fill-emerald-600 text-emerald-600" />
                   <span>{currentPkg.rating || 4.9}</span>
@@ -501,13 +501,13 @@ function DetailContent({
 
       {isEditOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-[620px] rounded-[6px] border border-gray-200 bg-white p-7 shadow-2xl">
+          <div className="w-full max-w-[620px] max-h-[90vh] overflow-y-auto rounded-[6px] border border-gray-200 bg-white p-5 sm:p-7 shadow-2xl">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="font-heading text-[24px] font-medium text-ink">
+                <h2 className="font-heading text-[22px] sm:text-[24px] font-medium text-ink">
                   Update Travel Package
                 </h2>
-                <p className="mt-1 text-[14px] text-muted-foreground">
+                <p className="mt-1 text-[13px] sm:text-[14px] text-muted-foreground">
                   Make changes to the travel package details below
                 </p>
               </div>
@@ -532,7 +532,7 @@ function DetailContent({
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor="edit-country" className="text-[14px] font-medium text-ink">Country</Label>
                   <Input
@@ -560,7 +560,7 @@ function DetailContent({
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor="edit-price" className="text-[14px] font-medium text-ink">Price (USD)</Label>
                   <Input

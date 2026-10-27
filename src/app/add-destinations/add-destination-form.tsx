@@ -113,7 +113,7 @@ export function AddDestinationForm() {
   };
 
   return (
-    <div className="mx-auto mt-12 w-full max-w-[760px] rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_16px_rgba(0,0,0,0.03)] md:mt-14 md:p-10">
+    <div className="mx-auto mt-8 sm:mt-12 w-full max-w-[760px] rounded-[6px] border border-[#f0f0f2] bg-white p-5 sm:p-7 md:p-10 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
       {errorMessage && (
         <div className="mb-6 flex items-center justify-between rounded-[4px] border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-red-800 animate-in fade-in slide-in-from-top-2">
           <div className="flex items-center gap-2.5">
@@ -282,13 +282,13 @@ export function AddDestinationForm() {
           />
         </div>
 
-        <div className="flex items-center justify-end gap-3.5 pt-3">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-3 pt-3">
           <Button
             type="button"
             variant="outline"
             disabled={isSubmitting}
             onClick={handleCancel}
-            className="h-11 rounded-[4px] border border-[#ef4444] bg-white px-6 text-[15px] font-medium text-[#ef4444] shadow-none transition-colors hover:bg-red-50 hover:text-[#ef4444] focus-visible:border-[#ef4444]/40 focus-visible:ring-2 focus-visible:ring-[#ef4444]/20 disabled:opacity-50"
+            className="h-11 w-full sm:w-auto rounded-[4px] border border-[#ef4444] bg-white px-6 text-[15px] font-medium text-[#ef4444] shadow-none transition-colors hover:bg-red-50 hover:text-[#ef4444] focus-visible:border-[#ef4444]/40 focus-visible:ring-2 focus-visible:ring-[#ef4444]/20 disabled:opacity-50"
           >
             <Trash2 className="size-4" strokeWidth={1.8} />
             Cancel
@@ -296,7 +296,7 @@ export function AddDestinationForm() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="h-11 rounded-[4px] bg-brand px-6 text-[15px] font-medium text-white shadow-none transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-70"
+            className="h-11 w-full sm:w-auto rounded-[4px] bg-brand px-6 text-[15px] font-medium text-white shadow-none transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-70"
           >
             {isSubmitting ? (
               <>

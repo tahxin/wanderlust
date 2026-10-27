@@ -31,15 +31,15 @@ export default function LoginPage() {
     <section className="min-h-screen bg-[#fafbfc] pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center">
-          <h1 className="font-heading text-[44px] leading-tight font-normal text-ink md:text-[56px]">
+          <h1 className="font-heading text-[32px] sm:text-[44px] leading-tight font-normal text-ink md:text-[56px]">
             Welcome Back
           </h1>
-          <p className="mt-2 text-[16px] text-muted-foreground">
+          <p className="mt-2 text-[15px] sm:text-[16px] text-muted-foreground">
             Resume your adventure with Wanderlust
           </p>
         </div>
 
-        <div className="mx-auto mt-10 w-full max-w-[480px] rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] sm:p-10">
+        <div className="mx-auto mt-8 sm:mt-10 w-full max-w-[480px] rounded-[6px] border border-[#f0f0f2] bg-white p-6 sm:p-10 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1.5">
               <Label htmlFor="login-email" className="text-[14px] font-medium text-ink">

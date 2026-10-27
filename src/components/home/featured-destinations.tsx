@@ -140,7 +140,7 @@ export function FeaturedDestinations() {
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-heading text-[44px] leading-[1.12] font-normal tracking-tight text-ink md:text-[54px] lg:text-[58px]">
+            <h2 className="font-heading text-[30px] sm:text-[44px] leading-[1.12] font-normal tracking-tight text-ink md:text-[54px] lg:text-[58px]">
               Featured Destinations
             </h2>
             <p className="mt-2 text-[16px] text-muted-foreground">

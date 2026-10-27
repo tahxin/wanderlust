@@ -23,20 +23,20 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-section-sky pt-[120px] pb-[120px]">
+    <section className="bg-section-sky py-16 sm:py-24 md:py-[120px]">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center font-heading text-[48px] leading-tight font-normal text-ink md:text-[56px] lg:text-[64px]">
+        <h2 className="text-center font-heading text-[32px] sm:text-[44px] leading-tight font-normal text-ink md:text-[56px] lg:text-[64px]">
           Why Choose Wanderlust
         </h2>
-        <p className="mt-3.5 text-center text-[16px] text-muted-foreground">
+        <p className="mt-2.5 sm:mt-3.5 text-center text-[15px] sm:text-[16px] text-muted-foreground">
           Your trusted partner for exceptional travel experiences
         </p>
 
-        <div className="mt-20 grid gap-7 md:grid-cols-3">
+        <div className="mt-10 sm:mt-16 md:mt-20 grid gap-6 sm:gap-7 md:grid-cols-3">
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="rounded-md border border-black/5 bg-card px-[38px] pt-[42px] pb-[38px]"
+              className="rounded-md border border-black/5 bg-card p-6 sm:p-8 md:px-[38px] md:pt-[42px] md:pb-[38px]"
             >
               <reason.icon
                 className="size-[38px] text-brand"

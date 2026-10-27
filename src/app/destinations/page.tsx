@@ -71,7 +71,7 @@ export default function DestinationsPage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
+        <h1 className="font-heading text-[34px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.12] font-normal tracking-tight text-ink">
           Explore All Destinations
         </h1>
         <p className="mt-3 text-[17px] text-muted-foreground">

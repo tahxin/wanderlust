@@ -30,15 +30,15 @@ export default function ProfilePage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
+        <h1 className="font-heading text-[34px] sm:text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
           My Profile
         </h1>
-        <p className="mt-3 text-[17px] text-muted-foreground">
+        <p className="mt-2 sm:mt-3 text-[15px] sm:text-[17px] text-muted-foreground">
           Manage your account settings and travel preferences
         </p>
 
-        <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-[380px_1fr]">
-          <div className="rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 items-start gap-8 lg:grid-cols-[380px_1fr]">
+          <div className="rounded-[6px] border border-[#f0f0f2] bg-white p-6 sm:p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)]">
             <div className="flex flex-col items-center text-center">
               <div className="relative size-36 overflow-hidden rounded-full border-4 border-white shadow-md">
                 <Image
@@ -112,44 +112,44 @@ export default function ProfilePage() {
           <div>
             <h2 className="text-[20px] font-semibold text-ink">Travel Statistics</h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-5 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Total Bookings</span>
-                  <div className="mt-2 text-[32px] font-bold text-ink">12</div>
+                  <div className="mt-2 text-[28px] sm:text-[32px] font-bold text-ink">12</div>
                 </div>
-                <div className="flex size-14 items-center justify-center rounded-full bg-cyan-50 text-brand">
-                  <Plane className="size-6" />
+                <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-cyan-50 text-brand">
+                  <Plane className="size-5 sm:size-6" />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-5 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Countries Visited</span>
-                  <div className="mt-2 text-[32px] font-bold text-ink">18</div>
+                  <div className="mt-2 text-[28px] sm:text-[32px] font-bold text-ink">18</div>
                 </div>
-                <div className="flex size-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <Globe className="size-6" />
+                <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                  <Globe className="size-5 sm:size-6" />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-5 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Upcoming Trips</span>
-                  <div className="mt-2 text-[32px] font-bold text-ink">2</div>
+                  <div className="mt-2 text-[28px] sm:text-[32px] font-bold text-ink">2</div>
                 </div>
-                <div className="flex size-14 items-center justify-center rounded-full bg-amber-50 text-amber-600">
-                  <TrendingUp className="size-6" />
+                <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                  <TrendingUp className="size-5 sm:size-6" />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between rounded-[6px] border border-[#f0f0f2] bg-white p-5 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
                 <div>
                   <span className="text-[14px] text-muted-foreground">Total Spent</span>
-                  <div className="mt-2 text-[32px] font-bold text-ink">$15,750</div>
+                  <div className="mt-2 text-[28px] sm:text-[32px] font-bold text-ink">$15,750</div>
                 </div>
-                <div className="flex size-14 items-center justify-center rounded-full bg-purple-50 text-purple-600">
-                  <DollarSign className="size-6" />
+                <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-purple-50 text-purple-600">
+                  <DollarSign className="size-5 sm:size-6" />
                 </div>
               </div>
             </div>
@@ -188,10 +188,10 @@ export default function ProfilePage() {
                 ].map((trip, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-4 rounded-[6px] border border-[#f0f0f2] bg-white hover:border-stone-300 transition-colors"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-3 rounded-[6px] border border-[#f0f0f2] bg-white hover:border-stone-300 transition-colors"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="relative h-14 w-20 overflow-hidden rounded-[4px] bg-stone-100">
+                      <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-[4px] bg-stone-100">
                         <Image
                           src={trip.image}
                           alt={trip.name}
@@ -204,11 +204,11 @@ export default function ProfilePage() {
                         <p className="text-xs text-muted-foreground">{trip.country} • {trip.date}</p>
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="flex items-center justify-between sm:block sm:text-right">
                       <Badge variant="outline" className="border-emerald-300 bg-emerald-50 text-emerald-700 font-semibold text-xs">
                         {trip.status}
                       </Badge>
-                      <p className="mt-1 text-xs font-medium text-ink">{trip.spent}</p>
+                      <p className="mt-0 sm:mt-1 text-xs font-medium text-ink">{trip.spent}</p>
                     </div>
                   </div>
                 ))}

@@ -93,10 +93,10 @@ export default function MyBookingsPage() {
   return (
     <section className="min-h-screen bg-white pt-28 pb-24 md:pt-32 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <h1 className="font-heading text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
+        <h1 className="font-heading text-[34px] sm:text-[48px] leading-[1.12] font-normal tracking-tight text-ink md:text-[60px] lg:text-[64px]">
           My Bookings
         </h1>
-        <p className="mt-3 text-[17px] text-muted-foreground">
+        <p className="mt-2 sm:mt-3 text-[15px] sm:text-[17px] text-muted-foreground">
           Manage and view your upcoming travel plans
         </p>
 
@@ -132,7 +132,7 @@ export default function MyBookingsPage() {
             bookings.map((booking) => (
               <div
                 key={booking._id}
-                className="flex flex-col gap-6 rounded-[6px] border border-[#f0f0f2] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-5 sm:gap-6 rounded-[6px] border border-[#f0f0f2] bg-white p-4 sm:p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                   <div className="relative aspect-[411/231] w-full shrink-0 overflow-hidden rounded-[4px] bg-gray-100 sm:w-[260px] md:w-[320px]">
@@ -181,7 +181,7 @@ export default function MyBookingsPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 self-end sm:self-center">
+                <div className="flex items-center justify-end gap-3 w-full sm:w-auto">
                   <Button
                     type="button"
                     variant="outline"
