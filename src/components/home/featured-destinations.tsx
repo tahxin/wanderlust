@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Calendar,
-  ChevronLeft,
-  ChevronRight,
   MapPin,
   Star,
 } from "lucide-react";
@@ -18,9 +17,9 @@ const fallbackDestinations: Destination[] = [
   {
     _id: "1",
     name: "Bali Paradise",
-    country: "Indonesia",
+    country: "Nepal",
     category: "Beach",
-    price: 1299,
+    price: 2700,
     duration: "7 Days/6 Nights",
     imageUrl: "/images/destinations/image1.png",
     rating: 4.5,
@@ -28,24 +27,24 @@ const fallbackDestinations: Destination[] = [
   },
   {
     _id: "2",
-    name: "Bora Bora Lagoon",
-    country: "French Polynesia",
+    name: "Bali Paradise",
+    country: "Indonesia",
     category: "Beach",
     price: 2700,
     duration: "7 Days/6 Nights",
     imageUrl: "/images/destinations/image2.png",
-    rating: 4.8,
+    rating: 4.5,
     reviewsCount: 189,
   },
   {
     _id: "3",
-    name: "Swiss Alpine Retreat",
-    country: "Switzerland",
-    category: "Mountain",
-    price: 1850,
-    duration: "5 Days/4 Nights",
+    name: "Bali Paradise",
+    country: "Indonesia",
+    category: "Beach",
+    price: 2700,
+    duration: "7 Days/6 Nights",
     imageUrl: "/images/destinations/image3.png",
-    rating: 4.9,
+    rating: 4.5,
     reviewsCount: 312,
   },
   {
@@ -69,17 +68,6 @@ const fallbackDestinations: Destination[] = [
     imageUrl: "/images/destinations/image5.png",
     rating: 4.7,
     reviewsCount: 156,
-  },
-  {
-    _id: "6",
-    name: "Arizona Canyon Wonder",
-    country: "USA",
-    category: "Adventure",
-    price: 1400,
-    duration: "4 Days/3 Nights",
-    imageUrl: "/images/destinations/image6.png",
-    rating: 4.6,
-    reviewsCount: 98,
   },
 ];
 
@@ -106,9 +94,8 @@ export function FeaturedDestinations() {
     };
   }, []);
 
-  const totalCards = destinations.length;
-  const cardsPerPage = 3;
-  const maxIndex = Math.max(0, totalCards - cardsPerPage);
+  const totalSlides = Math.min(5, Math.max(1, destinations.length));
+  const maxIndex = Math.max(0, destinations.length - 2);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -118,15 +105,16 @@ export function FeaturedDestinations() {
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
 
-  const currentDisplayNum = Math.min(currentIndex + 1, totalCards);
+  // 1/5 index formatting matching Figma
+  const currentDisplayNum = Math.min(currentIndex + 1, totalSlides);
 
   return (
-    <section className="bg-white py-24 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="bg-white py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
         {/* Top Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-heading text-[48px] leading-tight font-normal text-ink md:text-[56px] lg:text-[64px]">
+            <h2 className="font-heading text-[44px] leading-[1.12] font-normal tracking-tight text-ink md:text-[54px] lg:text-[58px]">
               Featured Destinations
             </h2>
             <p className="mt-2 text-[16px] text-muted-foreground">
@@ -136,70 +124,76 @@ export function FeaturedDestinations() {
 
           <Link
             href="/destinations"
-            className="inline-flex h-11 items-center gap-2 rounded-[3px] border border-brand px-6 text-[14px] font-semibold tracking-wider text-brand uppercase transition-colors hover:bg-brand hover:text-white"
+            className="inline-flex h-11 items-center gap-2 rounded-[2px] border border-brand px-6 text-[13px] font-bold tracking-wider text-brand uppercase transition-colors hover:bg-brand hover:text-white"
           >
             All Destinations
             <ArrowRight className="size-4" />
           </Link>
         </div>
 
-        {/* Carousel Grid */}
+        {/* Carousel Grid Track */}
         <div className="relative mt-12 overflow-hidden">
           <div
-            className="flex gap-7 transition-transform duration-500 ease-out"
+            className="flex gap-8 transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(-${currentIndex * (100 / cardsPerPage + 1.2)}%)`,
+              transform: `translateX(-${currentIndex * 52}%)`,
             }}
           >
             {destinations.map((pkg, idx) => (
               <div
                 key={pkg._id || idx}
-                className="group w-full shrink-0 flex-1 md:w-[calc(33.333%-19px)] md:max-w-[calc(33.333%-19px)]"
+                className="group w-[88vw] shrink-0 sm:w-[500px] md:w-[calc(50%-16px)] md:min-w-[calc(50%-16px)]"
               >
-                {/* Image Container */}
+                {/* Image Container with 4.5 Star Badge */}
                 <div className="relative aspect-[411/231] w-full overflow-hidden rounded-[2px] bg-gray-100">
                   <Image
                     src={pkg.imageUrl || "/images/destinations/image1.png"}
                     alt={pkg.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, 411px"
+                    sizes="(max-width: 768px) 88vw, 560px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Rating Badge */}
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-[3px] bg-white/90 px-2.5 py-1 text-[13px] font-semibold text-ink backdrop-blur-xs">
-                    <span>{pkg.rating ? pkg.rating.toFixed(1) : "4.8"}</span>
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-[3px] bg-white/95 px-2.5 py-1 text-[13px] font-semibold text-ink shadow-xs">
+                    <span>{pkg.rating ? pkg.rating.toFixed(1) : "4.5"}</span>
                     <Star className="size-3.5 fill-ink text-ink" />
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* Card Information */}
                 <div className="mt-5">
+                  {/* Location */}
                   <div className="flex items-center gap-1.5 text-[14px] text-muted-foreground">
-                    <MapPin className="size-4 text-ink" />
+                    <MapPin className="size-4 text-ink" strokeWidth={1.5} />
                     <span>{pkg.country}</span>
                   </div>
 
-                  <div className="mt-2 flex items-baseline justify-between">
-                    <h3 className="font-heading text-[22px] font-medium text-ink">
+                  {/* Title & Price on same line */}
+                  <div className="mt-2.5 flex items-baseline justify-between gap-4">
+                    <h3 className="font-heading text-[26px] font-normal text-ink">
                       {pkg.name}
                     </h3>
-                    <div className="text-right">
-                      <span className="text-[20px] font-semibold text-ink">
+                    <div className="text-right whitespace-nowrap">
+                      <span className="text-[22px] font-semibold text-ink">
                         ${typeof pkg.price === "number" ? pkg.price.toLocaleString() : pkg.price}
                       </span>
-                      <span className="text-[14px] text-muted-foreground">/Person</span>
+                      <span className="text-[14px] font-normal text-muted-foreground">
+                        /Person
+                      </span>
                     </div>
                   </div>
 
+                  {/* Duration */}
                   <div className="mt-2 flex items-center gap-2 text-[14px] text-muted-foreground">
-                    <Calendar className="size-4 text-ink" />
+                    <Calendar className="size-4 text-ink" strokeWidth={1.5} />
                     <span>{pkg.duration || "7 Days/6 Nights"}</span>
                   </div>
 
-                  <div className="mt-4 pt-2">
+                  {/* Book Now */}
+                  <div className="mt-4 pt-1">
                     <Link
                       href={`/destinations/${pkg._id}`}
-                      className="inline-flex items-center gap-1.5 text-[14px] font-bold tracking-wider text-brand uppercase hover:underline"
+                      className="inline-flex items-center gap-1.5 text-[13px] font-bold tracking-wider text-brand uppercase hover:underline"
                     >
                       Book Now
                       <ArrowUpRight className="size-4" />
@@ -211,40 +205,33 @@ export function FeaturedDestinations() {
           </div>
         </div>
 
-        {/* Carousel Pagination & Arrows */}
-        <div className="mt-12 flex items-center justify-between">
-          <div className="flex flex-1 items-center gap-4 pr-8">
-            <span className="text-[17px] font-medium text-ink">
-              {currentDisplayNum}/{totalCards}
+        {/* Carousel Pagination & Arrow Controls (matching Figma 01_Home.png) */}
+        <div className="mt-14 flex items-center justify-between gap-6">
+          <div className="flex flex-1 items-center gap-6">
+            <span className="text-[18px] font-medium text-ink min-w-[32px]">
+              {currentDisplayNum}/{totalSlides}
             </span>
-            <div className="h-[2px] flex-1 bg-gray-200">
-              <div
-                className="h-full bg-ink transition-all duration-300"
-                style={{
-                  width: `${(currentDisplayNum / totalCards) * 100}%`,
-                }}
-              />
-            </div>
+            <div className="h-[1px] flex-1 bg-gray-200" />
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={handlePrev}
               disabled={currentIndex === 0}
               aria-label="Previous slide"
-              className="flex size-11 items-center justify-center rounded-full border border-gray-300 text-ink transition-colors hover:border-ink disabled:opacity-40"
+              className="flex size-11 items-center justify-center rounded-full border border-gray-300 text-ink transition-colors hover:border-ink hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronLeft className="size-5" />
+              <ArrowLeft className="size-5" strokeWidth={1.5} />
             </button>
             <button
               type="button"
               onClick={handleNext}
               disabled={currentIndex >= maxIndex}
               aria-label="Next slide"
-              className="flex size-11 items-center justify-center rounded-full border border-gray-300 text-ink transition-colors hover:border-ink disabled:opacity-40"
+              className="flex size-11 items-center justify-center rounded-full border border-gray-300 text-ink transition-colors hover:border-ink hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronRight className="size-5" />
+              <ArrowRight className="size-5" strokeWidth={1.5} />
             </button>
           </div>
         </div>
