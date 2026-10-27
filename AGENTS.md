@@ -14,7 +14,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Verify changes
 
-- `npm run lint` — runs bare `eslint`, flat config in `eslint.config.mjs`
+- `npm run lint` — runs `oxlint`
 - `npx next typegen && npx tsc --noEmit` — `tsc` alone skips route-type validation; generate types first
 - `npm run build` — full check. No test runner is configured; don't invent test commands.
 
