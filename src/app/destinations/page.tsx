@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Calendar, MapPin, Star } from "lucide-react";
 import { type Destination, fetchDestinations } from "@/lib/api";
 import { DestinationCardSkeleton } from "@/components/skeletons/destinations-skeleton";
+import { Badge } from "@/components/ui/badge";
 
 const categories = [
   "All",
@@ -182,11 +183,17 @@ export default function DestinationsPage() {
                     sizes="(max-width: 768px) 100vw, 411px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* Category Pill Badge */}
+                  {pkg.category && (
+                    <Badge variant="outline" className="absolute top-4 left-4 bg-white/95 text-ink text-xs font-semibold shadow-xs border-stone-200">
+                      {pkg.category}
+                    </Badge>
+                  )}
                   {/* Rating Badge */}
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-[3px] bg-white/90 px-2.5 py-1 text-[13px] font-semibold text-ink backdrop-blur-xs">
+                  <Badge variant="secondary" className="absolute top-4 right-4 flex items-center gap-1.5 bg-white/95 text-ink text-xs font-semibold shadow-xs">
                     <span>{pkg.rating ? pkg.rating.toFixed(1) : "4.8"}</span>
                     <Star className="size-3.5 fill-ink text-ink" />
-                  </div>
+                  </Badge>
                 </div>
 
                 {/* Info */}

@@ -4,6 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Lock, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -41,36 +44,38 @@ export default function LoginPage() {
         <div className="mx-auto mt-10 w-full max-w-[480px] rounded-[6px] border border-[#f0f0f2] bg-white p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email Address */}
-            <div>
-              <label className="block text-[14px] font-medium text-ink">
+            <div className="space-y-1.5">
+              <Label htmlFor="login-email" className="text-[14px] font-medium text-ink">
                 Email Address
-              </label>
-              <div className="relative mt-2 flex items-center">
-                <Mail className="absolute left-3.5 size-4 text-muted-foreground" />
-                <input
+              </Label>
+              <div className="relative flex items-center">
+                <Mail className="absolute left-3.5 size-4 text-muted-foreground z-10" />
+                <Input
+                  id="login-email"
                   type="email"
                   placeholder="Enter your email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="h-12 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] pr-4 pl-10 text-[15px] text-ink placeholder:text-[#adb2b6] outline-none transition-colors focus:border-brand focus:bg-white"
+                  className="h-12 bg-[#f8fafc] pl-10"
                   required
                 />
               </div>
             </div>
 
             {/* Password */}
-            <div>
-              <label className="block text-[14px] font-medium text-ink">
+            <div className="space-y-1.5">
+              <Label htmlFor="login-password" className="text-[14px] font-medium text-ink">
                 Password
-              </label>
-              <div className="relative mt-2 flex items-center">
-                <Lock className="absolute left-3.5 size-4 text-muted-foreground" />
-                <input
+              </Label>
+              <div className="relative flex items-center">
+                <Lock className="absolute left-3.5 size-4 text-muted-foreground z-10" />
+                <Input
+                  id="login-password"
                   type="password"
                   placeholder="Enter your password"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
-                  className="h-12 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] pr-4 pl-10 text-[15px] text-ink placeholder:text-[#adb2b6] outline-none transition-colors focus:border-brand focus:bg-white"
+                  className="h-12 bg-[#f8fafc] pl-10"
                   required
                 />
               </div>
@@ -96,12 +101,12 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <button
+            <Button
               type="submit"
-              className="mt-2 flex h-12 w-full items-center justify-center rounded-[4px] bg-brand text-[15px] font-semibold text-white transition-colors hover:bg-brand/90"
+              className="mt-2 h-12 w-full bg-brand text-[15px] font-semibold text-white hover:bg-brand/90"
             >
               Sign In
-            </button>
+            </Button>
           </form>
 
           {/* Divider */}
@@ -115,10 +120,11 @@ export default function LoginPage() {
           </div>
 
           {/* Google Sign In */}
-          <button
+          <Button
             type="button"
+            variant="outline"
             onClick={() => alert("Google sign in initialized")}
-            className="flex h-12 w-full items-center justify-center gap-3 rounded-[4px] border border-gray-200 bg-white text-[14px] font-semibold text-ink transition-colors hover:bg-gray-50"
+            className="h-12 w-full gap-3 border-gray-200 font-semibold text-ink hover:bg-gray-50"
           >
             <svg className="size-4" viewBox="0 0 24 24">
               <path

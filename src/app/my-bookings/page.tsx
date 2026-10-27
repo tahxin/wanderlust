@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { type Booking, cancelBooking, fetchBookings } from "@/lib/api";
 import { BookingCardSkeleton } from "@/components/skeletons/my-bookings-skeleton";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const fallbackBookings: Booking[] = [
   {
@@ -150,15 +152,15 @@ export default function MyBookingsPage() {
                     {/* Status badge */}
                     <div>
                       {booking.status === "Pending" ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-[13px] font-medium text-amber-700">
+                        <Badge variant="outline" className="gap-1.5 border-amber-300 bg-amber-50 text-amber-700 font-medium">
                           <Clock className="size-3.5" />
                           Pending
-                        </span>
+                        </Badge>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[13px] font-medium text-emerald-700">
+                        <Badge variant="outline" className="gap-1.5 border-emerald-300 bg-emerald-50 text-emerald-700 font-medium">
                           <CheckCircle2 className="size-3.5" />
                           Confirmed
-                        </span>
+                        </Badge>
                       )}
                     </div>
 
@@ -185,21 +187,24 @@ export default function MyBookingsPage() {
 
                 {/* Right side: Action Buttons */}
                 <div className="flex items-center gap-3 self-end sm:self-center">
-                  <button
+                  <Button
                     type="button"
+                    variant="outline"
                     onClick={() => handleCancel(booking._id, booking.destinationName)}
-                    className="inline-flex h-10 items-center gap-2 rounded-[4px] border border-[#ef4444] bg-white px-5 text-[14px] font-medium text-[#ef4444] transition-colors hover:bg-red-50"
+                    className="h-10 border-red-200 text-red-500 hover:bg-red-50 hover:text-red-600 gap-2"
                   >
                     <Trash2 className="size-4" strokeWidth={1.8} />
                     Cancel
-                  </button>
-                  <Link
-                    href={`/destinations/${booking.destinationId || ""}`}
-                    className="inline-flex h-10 items-center gap-2 rounded-[4px] bg-brand px-6 text-[14px] font-medium text-white transition-colors hover:bg-brand/90"
-                  >
-                    <Eye className="size-4" />
-                    View
-                  </Link>
+                  </Button>
+                  <Button
+                    render={
+                      <Link href={`/destinations/${booking.destinationId || ""}`}>
+                        <Eye className="size-4 mr-2" />
+                        View
+                      </Link>
+                    }
+                    className="h-10 bg-brand text-white hover:bg-brand/90"
+                  />
                 </div>
               </div>
             ))

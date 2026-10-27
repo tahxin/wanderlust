@@ -27,6 +27,11 @@ import {
   updateDestination,
 } from "@/lib/api";
 import { DestinationDetailSkeleton } from "@/components/skeletons/destination-detail-skeleton";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 
 const itineraryDays = [
   {
@@ -470,16 +475,16 @@ function DetailContent({
                   </div>
                 </div>
 
-                <button
+                <Button
                   type="button"
                   onClick={handleBookNow}
                   disabled={isSubmitting}
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-[4px] bg-brand text-[15px] font-semibold text-white transition-colors hover:bg-brand/90 disabled:opacity-70"
+                  className="h-12 w-full bg-brand text-[15px] font-semibold text-white hover:bg-brand/90"
                 >
-                  {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : null}
+                  {isSubmitting ? <Loader2 className="size-4 animate-spin mr-2" /> : null}
                   Book Now
-                  <ArrowRight className="size-4" />
-                </button>
+                  <ArrowRight className="size-4 ml-2" />
+                </Button>
 
                 <div className="space-y-2 pt-2 text-[13px] text-muted-foreground">
                   <div className="flex items-center gap-2">
@@ -524,32 +529,35 @@ function DetailContent({
             </div>
 
             <form onSubmit={handleEditSubmit} className="mt-6 space-y-4">
-              <div>
-                <label className="block text-[14px] font-medium text-ink">Destination Name</label>
-                <input
+              <div className="space-y-1.5">
+                <Label htmlFor="edit-name" className="text-[14px] font-medium text-ink">Destination Name</Label>
+                <Input
+                  id="edit-name"
                   type="text"
                   value={editForm.name}
                   onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                  className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                  className="h-11 bg-[#f8fafc]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[14px] font-medium text-ink">Country</label>
-                  <input
+                <div className="space-y-1.5">
+                  <Label htmlFor="edit-country" className="text-[14px] font-medium text-ink">Country</Label>
+                  <Input
+                    id="edit-country"
                     type="text"
                     value={editForm.country}
                     onChange={(e) => setEditForm({ ...editForm, country: e.target.value })}
-                    className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                    className="h-11 bg-[#f8fafc]"
                   />
                 </div>
-                <div>
-                  <label className="block text-[14px] font-medium text-ink">Category</label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="edit-category" className="text-[14px] font-medium text-ink">Category</Label>
                   <select
+                    id="edit-category"
                     value={editForm.category}
                     onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
-                    className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                    className="h-11 w-full rounded-lg border border-input bg-[#f8fafc] px-3 text-[14px] text-ink outline-none"
                   >
                     {categories.map((c) => (
                       <option key={c} value={c}>
@@ -561,73 +569,79 @@ function DetailContent({
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[14px] font-medium text-ink">Price (USD)</label>
-                  <input
+                <div className="space-y-1.5">
+                  <Label htmlFor="edit-price" className="text-[14px] font-medium text-ink">Price (USD)</Label>
+                  <Input
+                    id="edit-price"
                     type="text"
                     value={editForm.price}
                     onChange={(e) => setEditForm({ ...editForm, price: e.target.value })}
-                    className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                    className="h-11 bg-[#f8fafc]"
                   />
                 </div>
-                <div>
-                  <label className="block text-[14px] font-medium text-ink">Duration</label>
-                  <input
+                <div className="space-y-1.5">
+                  <Label htmlFor="edit-duration" className="text-[14px] font-medium text-ink">Duration</Label>
+                  <Input
+                    id="edit-duration"
                     type="text"
                     value={editForm.duration}
                     onChange={(e) => setEditForm({ ...editForm, duration: e.target.value })}
-                    className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                    className="h-11 bg-[#f8fafc]"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[14px] font-medium text-ink">Departure Date</label>
-                <input
+              <div className="space-y-1.5">
+                <Label htmlFor="edit-departure" className="text-[14px] font-medium text-ink">Departure Date</Label>
+                <Input
+                  id="edit-departure"
                   type="text"
                   value={editForm.departureDate}
                   onChange={(e) => setEditForm({ ...editForm, departureDate: e.target.value })}
-                  className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                  className="h-11 bg-[#f8fafc]"
                 />
               </div>
 
-              <div>
-                <label className="block text-[14px] font-medium text-ink">Image URL</label>
-                <input
+              <div className="space-y-1.5">
+                <Label htmlFor="edit-image" className="text-[14px] font-medium text-ink">Image URL</Label>
+                <Input
+                  id="edit-image"
                   type="text"
                   value={editForm.imageUrl}
                   onChange={(e) => setEditForm({ ...editForm, imageUrl: e.target.value })}
-                  className="mt-1.5 h-11 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] px-3.5 text-[14px] text-ink outline-none"
+                  className="h-11 bg-[#f8fafc]"
                 />
               </div>
 
-              <div>
-                <label className="block text-[14px] font-medium text-ink">Description</label>
-                <textarea
+              <div className="space-y-1.5">
+                <Label htmlFor="edit-desc" className="text-[14px] font-medium text-ink">Description</Label>
+                <Textarea
+                  id="edit-desc"
                   rows={4}
                   value={editForm.description}
                   onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
-                  className="mt-1.5 w-full rounded-[4px] border border-gray-200 bg-[#f8fafc] p-3 text-[14px] text-ink outline-none"
+                  className="bg-[#f8fafc]"
                 />
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-3">
-                <button
+                <Button
                   type="button"
+                  variant="outline"
                   onClick={() => setIsEditOpen(false)}
-                  className="inline-flex h-10 items-center gap-2 rounded-[4px] border border-[#ef4444] bg-white px-5 text-[14px] font-medium text-[#ef4444] hover:bg-red-50"
+                  className="h-10 text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600"
                 >
-                  <Trash2 className="size-4" />
+                  <Trash2 className="size-4 mr-1.5" />
                   Cancel
-                </button>
-                <button
+                </Button>
+                <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex h-10 items-center gap-2 rounded-[4px] bg-brand px-6 text-[14px] font-medium text-white hover:bg-brand/90 disabled:opacity-70"
+                  className="h-10 bg-brand text-white hover:bg-brand/90"
                 >
-                  <Save className="size-4" />
+                  <Save className="size-4 mr-1.5" />
                   Save Changes
-                </button>
+                </Button>
               </div>
             </form>
           </div>
@@ -661,22 +675,24 @@ function DetailContent({
             </p>
 
             <div className="mt-8 flex items-center justify-end gap-3">
-              <button
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => setIsDeleteOpen(false)}
-                className="h-10 rounded-[4px] border border-gray-300 bg-white px-5 text-[14px] font-medium text-ink hover:bg-gray-50"
+                className="h-10"
               >
                 Cancel
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="destructive"
                 onClick={handleDelete}
                 disabled={isSubmitting}
-                className="inline-flex h-10 items-center gap-2 rounded-[4px] bg-[#ef4444] px-6 text-[14px] font-medium text-white hover:bg-red-600 disabled:opacity-70"
+                className="h-10 gap-2"
               >
                 <Trash2 className="size-4" />
                 Delete Package
-              </button>
+              </Button>
             </div>
           </div>
         </div>

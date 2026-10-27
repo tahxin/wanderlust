@@ -9,8 +9,12 @@ import {
   Globe,
   MapPin,
   Plane,
+  Save,
   TrendingUp,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -57,18 +61,20 @@ export default function ProfilePage() {
               </div>
 
               {isEditing ? (
-                <div className="mt-4 space-y-2">
-                  <input
+                <div className="mt-4 space-y-2 w-full">
+                  <Input
                     type="text"
                     value={profile.name}
                     onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                    className="h-9 w-full rounded border border-gray-300 px-3 text-center text-[18px] font-medium text-ink outline-none focus:border-brand"
+                    className="h-10 text-center font-medium bg-[#f8fafc]"
+                    placeholder="Full Name"
                   />
-                  <input
+                  <Input
                     type="text"
                     value={profile.location}
                     onChange={(e) => setProfile({ ...profile, location: e.target.value })}
-                    className="h-8 w-full rounded border border-gray-300 px-2 text-center text-[13px] text-muted-foreground outline-none focus:border-brand"
+                    className="h-9 text-center text-sm text-muted-foreground bg-[#f8fafc]"
+                    placeholder="City, Country"
                   />
                 </div>
               ) : (
@@ -97,14 +103,14 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <button
+            <Button
               type="button"
               onClick={() => setIsEditing(!isEditing)}
-              className="mt-8 flex h-11 w-full items-center justify-center gap-2 rounded-[4px] bg-brand text-[15px] font-medium text-white transition-colors hover:bg-brand/90"
+              className="mt-8 h-11 w-full bg-brand text-white hover:bg-brand/90"
             >
-              <Edit2 className="size-4" />
+              {isEditing ? <Save className="size-4 mr-2" /> : <Edit2 className="size-4 mr-2" />}
               {isEditing ? "Save Profile" : "Edit Profile"}
-            </button>
+            </Button>
           </div>
 
           {/* Right: Travel Statistics */}
