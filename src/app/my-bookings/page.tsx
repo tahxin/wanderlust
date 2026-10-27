@@ -12,6 +12,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { type Booking, cancelBooking, fetchBookings } from "@/lib/api";
+import { BookingCardSkeleton } from "@/components/skeletons/my-bookings-skeleton";
 
 const fallbackBookings: Booking[] = [
   {
@@ -107,8 +108,10 @@ export default function MyBookingsPage() {
         {/* Bookings List */}
         <div className="mt-12 space-y-6">
           {loading ? (
-            <div className="py-20 text-center text-muted-foreground">
-              Loading your bookings...
+            <div className="space-y-4">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <BookingCardSkeleton key={i} />
+              ))}
             </div>
           ) : bookings.length === 0 ? (
             <div className="rounded-[6px] border border-dashed border-gray-200 py-16 text-center">

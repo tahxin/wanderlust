@@ -26,6 +26,7 @@ import {
   fetchDestinationById,
   updateDestination,
 } from "@/lib/api";
+import { DestinationDetailSkeleton } from "@/components/skeletons/destination-detail-skeleton";
 
 const itineraryDays = [
   {
@@ -690,16 +691,7 @@ export default function DestinationDetailPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-[#FDFBF7] pt-28 md:pt-32 pb-20 flex items-center justify-center">
-          <div className="flex flex-col items-center gap-3">
-            <Loader2 className="h-8 w-8 animate-spin text-[#15a1bf]" />
-            <p className="text-sm font-medium text-stone-500">Loading destination details...</p>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<DestinationDetailSkeleton />}>
       <DetailContent params={params} />
     </Suspense>
   );

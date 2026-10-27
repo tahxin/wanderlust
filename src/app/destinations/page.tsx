@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Calendar, MapPin, Star } from "lucide-react";
 import { type Destination, fetchDestinations } from "@/lib/api";
+import { DestinationCardSkeleton } from "@/components/skeletons/destinations-skeleton";
 
 const categories = [
   "All",
@@ -148,8 +149,10 @@ export default function DestinationsPage() {
 
         {/* Destinations Grid */}
         {loading ? (
-          <div className="mt-16 flex items-center justify-center py-20 text-muted-foreground">
-            <p className="text-[17px]">Loading destinations from catalog...</p>
+          <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <DestinationCardSkeleton key={i} />
+            ))}
           </div>
         ) : filteredDestinations.length === 0 ? (
           <div className="mt-16 rounded-[6px] border border-dashed border-gray-300 py-16 text-center">
