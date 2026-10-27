@@ -92,11 +92,14 @@ export function FeaturedDestinations() {
     fetchDestinations()
       .then((data) => {
         if (isMounted && data && data.length > 0) {
+          console.log(
+            `🌟 [FRONTEND FeaturedDestinations] Received ${data.length} live packages for homepage from backend`
+          );
           setDestinations(data);
         }
       })
       .catch((err) => {
-        console.error("Failed to load destinations:", err);
+        console.error("❌ [FRONTEND FeaturedDestinations] Failed to load destinations:", err);
       });
     return () => {
       isMounted = false;

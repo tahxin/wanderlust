@@ -45,6 +45,9 @@ export async function fetchDestinations(options?: {
   search?: string;
   sort?: string;
 }): Promise<Destination[]> {
+  const queryDesc = options ? JSON.stringify(options) : "none";
+  console.log(`🚀 [FRONTEND -> BACKEND] GET /destinations | Filters: ${queryDesc}`);
+
   try {
     const params = new URLSearchParams();
     if (options?.category && options.category !== "All") {
@@ -60,33 +63,52 @@ export async function fetchDestinations(options?: {
     const queryString = params.toString();
     const url = `${API_BASE_URL}/destinations${queryString ? `?${queryString}` : ""}`;
 
+    const startTime = performance.now();
     const res = await fetch(url, {
       cache: "no-store",
     });
 
+    const elapsed = Math.round(performance.now() - startTime);
+
     if (!res.ok) {
+      console.error(
+        `❌ [BACKEND -> FRONTEND] Error ${res.status} (${res.statusText}) from ${url} in ${elapsed}ms`
+      );
       throw new Error(`Failed to fetch destinations: ${res.statusText}`);
     }
 
     const data = await res.json();
+    console.log(
+      `📥 [BACKEND -> FRONTEND] Received ${data.count ?? data.data?.length ?? 0} destinations in ${elapsed}ms:`,
+      data.data
+    );
+
     return data.data || [];
   } catch (error) {
-    console.error("fetchDestinations error:", error);
+    console.error("❌ [FRONTEND ERROR] fetchDestinations failed:", error);
     return [];
   }
 }
 
 // Fetch single destination by id
 export async function fetchDestinationById(id: string): Promise<Destination | null> {
+  console.log(`🚀 [FRONTEND -> BACKEND] GET /destinations/${id}`);
   try {
+    const startTime = performance.now();
     const res = await fetch(`${API_BASE_URL}/destinations/${id}`, {
       cache: "no-store",
     });
-    if (!res.ok) return null;
+    const elapsed = Math.round(performance.now() - startTime);
+
+    if (!res.ok) {
+      console.warn(`⚠️ [BACKEND -> FRONTEND] Destination ${id} not found (${res.status}) in ${elapsed}ms`);
+      return null;
+    }
     const data = await res.json();
+    console.log(`📥 [BACKEND -> FRONTEND] Received destination ${id} in ${elapsed}ms:`, data.data);
     return data.data || null;
   } catch (error) {
-    console.error(`fetchDestinationById(${id}) error:`, error);
+    console.error(`❌ [FRONTEND ERROR] fetchDestinationById(${id}):`, error);
     return null;
   }
 }
@@ -95,7 +117,10 @@ export async function fetchDestinationById(id: string): Promise<Destination | nu
 export async function createDestination(
   input: CreateDestinationInput
 ): Promise<{ success: boolean; data?: Destination; error?: string }> {
+  console.log("🚀 [FRONTEND -> BACKEND] POST /destinations | Sending payload:", input);
+
   try {
+    const startTime = performance.now();
     const res = await fetch(`${API_BASE_URL}/destinations`, {
       method: "POST",
       headers: {
@@ -104,13 +129,25 @@ export async function createDestination(
       body: JSON.stringify(input),
     });
 
+    const elapsed = Math.round(performance.now() - startTime);
     const data = await res.json();
+
     if (!res.ok) {
+      console.error(
+        `❌ [BACKEND -> FRONTEND] Failed to create destination (${res.status}) in ${elapsed}ms:`,
+        data
+      );
       return { success: false, error: data.error || "Failed to create travel package." };
     }
 
+    console.log(
+      `✅ [BACKEND -> FRONTEND] Destination created successfully in ${elapsed}ms:`,
+      data.data
+    );
+
     return { success: true, data: data.data };
   } catch (error: unknown) {
+    console.error("❌ [FRONTEND ERROR] createDestination network exception:", error);
     const message =
       error instanceof Error ? error.message : "Network error connecting to backend.";
     return { success: false, error: message };
@@ -121,16 +158,25 @@ export async function createDestination(
 export async function deleteDestination(
   id: string
 ): Promise<{ success: boolean; error?: string }> {
+  console.log(`🚀 [FRONTEND -> BACKEND] DELETE /destinations/${id}`);
+
   try {
+    const startTime = performance.now();
     const res = await fetch(`${API_BASE_URL}/destinations/${id}`, {
       method: "DELETE",
     });
+    const elapsed = Math.round(performance.now() - startTime);
     const data = await res.json();
+
     if (!res.ok) {
+      console.error(`❌ [BACKEND -> FRONTEND] Delete failed (${res.status}) in ${elapsed}ms:`, data);
       return { success: false, error: data.error || "Failed to delete destination." };
     }
+
+    console.log(`✅ [BACKEND -> FRONTEND] Destination deleted in ${elapsed}ms:`, data);
     return { success: true };
   } catch (error: unknown) {
+    console.error("❌ [FRONTEND ERROR] deleteDestination exception:", error);
     const message = error instanceof Error ? error.message : "Network error";
     return { success: false, error: message };
   }

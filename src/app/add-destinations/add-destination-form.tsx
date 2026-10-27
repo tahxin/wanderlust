@@ -71,6 +71,7 @@ export function AddDestinationForm() {
   };
 
   const handleCancel = () => {
+    console.log("ℹ️ [FRONTEND UI] Form reset / cancel triggered");
     setFormData(initialFormState);
     setSuccessMessage(null);
     setErrorMessage(null);
@@ -78,10 +79,12 @@ export function AddDestinationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("📝 [FRONTEND UI] Submitting destination form with state:", formData);
     setSuccessMessage(null);
     setErrorMessage(null);
 
     if (!formData.name.trim() || !formData.country.trim()) {
+      console.warn("⚠️ [FRONTEND VALIDATION] Validation failed: missing Name or Country");
       setErrorMessage("Please enter both Destination Name and Country.");
       return;
     }
@@ -91,15 +94,18 @@ export function AddDestinationForm() {
       const res = await createDestination(formData);
 
       if (res.success && res.data) {
+        console.log("🎉 [FRONTEND UI] Destination created successfully:", res.data);
         setSuccessMessage(
           `"${res.data.name}" has been successfully saved to the database!`
         );
         setFormData(initialFormState);
         window.scrollTo({ top: 120, behavior: "smooth" });
       } else {
+        console.error("❌ [FRONTEND UI] Destination creation failed:", res.error);
         setErrorMessage(res.error || "Failed to create destination package.");
       }
-    } catch {
+    } catch (err) {
+      console.error("❌ [FRONTEND UI] Form submission caught exception:", err);
       setErrorMessage("An unexpected network error occurred.");
     } finally {
       setIsSubmitting(false);

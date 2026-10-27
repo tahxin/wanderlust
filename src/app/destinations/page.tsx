@@ -41,12 +41,15 @@ export default function DestinationsPage() {
     })
       .then((data) => {
         if (isMounted) {
+          console.log(
+            `📊 [FRONTEND /destinations] Loaded ${data.length} packages from backend. (Category: ${selectedCategory}, Sort: ${selectedSort})`
+          );
           setDestinations(data);
           setLoading(false);
         }
       })
       .catch((err) => {
-        console.error("Error loading destinations:", err);
+        console.error("❌ [FRONTEND /destinations] Error loading destinations:", err);
         if (isMounted) setLoading(false);
       });
 
