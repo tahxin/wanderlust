@@ -215,9 +215,9 @@ export default function ProfilePage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
+                      <Badge variant="outline" className="border-emerald-300 bg-emerald-50 text-emerald-700 font-semibold text-xs">
                         {trip.status}
-                      </span>
+                      </Badge>
                       <p className="mt-1 text-xs font-medium text-ink">{trip.spent}</p>
                     </div>
                   </div>

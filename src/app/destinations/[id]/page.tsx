@@ -346,6 +346,11 @@ function DetailContent({
                   <Calendar className="size-4 text-ink" />
                   <span>{currentPkg.duration}</span>
                 </div>
+                {currentPkg.category && (
+                  <Badge variant="outline" className="border-stone-300 text-ink text-xs font-medium">
+                    {currentPkg.category}
+                  </Badge>
+                )}
               </div>
             </div>
 

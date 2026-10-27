@@ -168,7 +168,7 @@ export default function SignUpPage() {
               />
             </svg>
             Sign Up With Google
-          </button>
+          </Button>
 
           <p className="mt-8 text-center text-[14px] text-muted-foreground">
             Already have an account?{" "}
