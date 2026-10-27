@@ -156,6 +156,108 @@ export default function ProfilePage() {
                 </div>
               </div>
             </div>
+
+            {/* Past Completed Adventures */}
+            <div className="mt-10">
+              <div className="flex items-center justify-between">
+                <h3 className="text-[20px] font-semibold text-ink">Recent Adventures</h3>
+                <span className="text-[14px] text-brand font-medium">View All (12)</span>
+              </div>
+              <div className="mt-4 space-y-3">
+                {[
+                  {
+                    name: "Swiss Alpine Retreat",
+                    country: "Switzerland",
+                    date: "October 2025",
+                    spent: "$1,850",
+                    status: "Completed",
+                    image: "/images/destinations/image3.png",
+                  },
+                  {
+                    name: "Machu Picchu Ancient Citadel",
+                    country: "Peru",
+                    date: "July 2025",
+                    spent: "$2,100",
+                    status: "Completed",
+                    image: "/images/destinations/image4.png",
+                  },
+                  {
+                    name: "Maldives Coral Reef Haven",
+                    country: "Maldives",
+                    date: "January 2025",
+                    spent: "$2,450",
+                    status: "Completed",
+                    image: "/images/destinations/image5.png",
+                  },
+                ].map((trip, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between p-4 rounded-[6px] border border-[#f0f0f2] bg-white hover:border-stone-300 transition-colors"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="relative h-14 w-20 overflow-hidden rounded-[4px] bg-stone-100">
+                        <Image
+                          src={trip.image}
+                          alt={trip.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-ink text-[15px]">{trip.name}</h4>
+                        <p className="text-xs text-muted-foreground">{trip.country} • {trip.date}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="inline-block rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
+                        {trip.status}
+                      </span>
+                      <p className="mt-1 text-xs font-medium text-ink">{trip.spent}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Saved Wishlist */}
+            <div className="mt-10">
+              <h3 className="text-[20px] font-semibold text-ink">Saved to Wishlist</h3>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    name: "Bora Bora Overwater Bungalows",
+                    country: "French Polynesia",
+                    price: "$2,700",
+                    image: "/images/destinations/image2.png",
+                  },
+                  {
+                    name: "Arizona Grand Canyon Trek",
+                    country: "USA",
+                    price: "$1,400",
+                    image: "/images/destinations/image6.png",
+                  },
+                ].map((wish, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 p-3.5 rounded-[6px] border border-[#f0f0f2] bg-white"
+                  >
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[4px] bg-stone-100">
+                      <Image
+                        src={wish.image}
+                        alt={wish.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-ink text-sm truncate">{wish.name}</h4>
+                      <p className="text-xs text-muted-foreground">{wish.country}</p>
+                      <p className="text-xs font-semibold text-brand mt-1">{wish.price} / person</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
